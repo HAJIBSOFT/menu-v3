@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة طعام المطعم</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 id="app-title"><i class="fas fa-utensils"></i> قائمة الطعام</h1>
+                <div class="header-actions">
+                    <button id="open-cart-button-client" class="button-icon" style="display: none;">
+                        <i class="fas fa-shopping-basket"></i>
+                        <span id="cart-count-badge-header-client" class="cart-count">0</span>
+                    </button>
+                    <button id="logout-button-client" class="button-outline" style="display: none;"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container main-content">
+            <section id="restaurant-info" class="restaurant-info-section page-section">
+                <img src="placeholder-logo.png" alt="شعار المطعم" class="restaurant-logo"> <!-- استبدل placeholder-logo.png -->
+                <h2>اسم المطعم</h2>
+                <p>نقدم أشهى المأكولات في أجواء عائلية رائعة. تذوق أطباقنا المميزة المحضرة بعناية من أجود المكونات الطازجة.</p>
+                <div class="social-links">
+                    <a href="#" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="انستغرام"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="تويتر"><i class="fab fa-twitter"></i></a>
+                </div>
+            </section>
+
+            <div id="menu-view-client" class="page active page-section">
+                <div class="menu-controls">
+                    <h3><i class="fas fa-concierge-bell"></i> قائمة الطعام</h3>
+                    <button id="toggle-view-button-client" class="button-secondary button-icon-only" title="تغيير طريقة العرض">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                </div>
+                <div class="menu-filters-client">
+                    <input type="text" id="search-menu-client" class="search-input" placeholder="ابحث عن صنف...">
+                    <div id="category-buttons-container-client" class="category-buttons">
+                        <!-- أزرار الفئات -->
+                    </div>
+                </div>
+                <div id="menu-items-container-client" class="menu-grid two-columns-view">
+                    <p class="loading-text">جاري تحميل قائمة الطعام...</p>
+                </div>
+                 <div class="staff-login-link">
+                   
+                </div>
+            </div>
+        </div>
+        <footer class="app-footer">
+            <p>© <span id="current-year"></span> تصميم فريق حاجب سوفت</p>
+        </footer>
+    </div>
+
+    <div id="cart-panel-client" class="cart-offcanvas">
+        <div class="cart-panel-header">
+            <h3><i class="fas fa-shopping-basket"></i> سلة الطلبات</h3>
+            <button id="close-cart-panel-button-client" class="close-cart-button"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-panel-body">
+            <ul id="cart-items-client-panel">
+                <li class="empty-cart-message">سلتك فارغة حاليًا.</li>
+            </ul>
+        </div>
+        <div class="cart-panel-footer">
+            <div class="cart-summary">
+                <p>المجموع الفرعي (شامل الضريبة): <span id="cart-subtotal-inclusive-client-panel">0.00</span> ريال</p>
+                <p>منها ضريبة القيمة المضافة (15%): <span id="cart-vat-amount-client-panel">0.00</span> ريال</p>
+                <hr>
+                <p class="total-bold">الإجمالي الكلي: <span id="cart-total-final-client-panel">0.00</span> ريال</p>
+            </div>
+
+            <div id="order-type-selection-client" style="display: none; margin-bottom: 15px;">
+                <label for="order-type-client">اختر نوع الطلب:</label>
+                <select id="order-type-client">
+                    <option value="pickup">استلام من المطعم</option>
+                    <option value="delivery">توصيل للمنزل</option>
+                </select>
+            </div>
+            <div id="delivery-info-client" style="display: none; margin-bottom: 15px;">
+                <input type="text" id="customer-name-client-panel" placeholder="الاسم الكامل" style="margin-bottom: 10px;">
+                <input type="text" id="customer-phone-client-panel" placeholder="رقم الجوال (05xxxxxxxx)" style="margin-bottom: 10px;">
+            </div>
+            
+            <input type="text" id="customer-identifier-client-panel" placeholder="رقم الطاولة (إذا متوفر)" style="margin-bottom: 10px;">
+            <button id="submit-order-button-client-panel" class="button-primary full-width"><i class="fas fa-paper-plane"></i> إرسال الطلب</button>
+        </div>
+    </div>
+    <div id="cart-overlay-client" class="cart-overlay-backdrop"></div>
+
+    <div id="toast-container"></div>
+    <div id="loading-spinner-main" class="loading-overlay" style="display:none;">
+        <div class="spinner"></div>
+        <p>جاري التحميل...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
